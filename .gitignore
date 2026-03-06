@@ -1,0 +1,37 @@
+# ===================== 系统/编辑器通用忽略项 =====================
+# 系统缓存
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# 编辑器配置（按需保留）
+.idea/
+.vscode/
+.project
+.classpath
+
+# ===================== 前端目录 (fronted) 专属忽略项 =====================
+# 包依赖（仅忽略前端的node_modules）
+fronted/node_modules/
+
+# 环境文件（仅忽略前端的.env相关）
+fronted/.env
+fronted/.env.*
+fronted/!.env.example  # 保留示例文件（可选）
+
+# 前端构建产物
+fronted/dist/
+fronted/build/
+fronted/out/
+
+# 前端日志/缓存
+fronted/npm-debug.log*
+fronted/yarn-debug.log*
+fronted/yarn-error.log*
+
+backend/.venv/
+backend/__pycache__/
+backend/*.py[cod]
+backend/.env
+backend/config.py
