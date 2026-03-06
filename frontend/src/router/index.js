@@ -3,10 +3,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // 2. 导入用户状态（用来判断是否登录）
 import { useUserStore } from '@/stores/user'
-// 3. 导入页面组件（后面会写这三个 .vue 文件）
+// 3. 导入页面组件
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import Home from '@/views/Home.vue'
+import Monitor from '@/views/Monitor.vue'
+import CameraList from '@/views/CameraList.vue'
+import CameraConfig from '@/views/CameraConfig.vue'
+import Playback from '@/views/Playback.vue'
 
 // 4. 定义路由规则：数组里每个对象对应一个“路径-组件”映射
 const routes = [
@@ -29,6 +33,36 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: { requiresAuth: true }  // 自定义元信息：标记这个页面需要登录才能看
+  },
+  {
+    path: '/monitor',   // 监控页面
+    name: 'Monitor',
+    component: Monitor,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/cameras',   // 摄像头列表
+    name: 'CameraList',
+    component: CameraList,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/camera-config',   // 添加摄像头
+    name: 'CameraConfigAdd',
+    component: CameraConfig,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/camera-config/:id',   // 编辑摄像头
+    name: 'CameraConfigEdit',
+    component: CameraConfig,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/playback',  // 录像回放
+    name: 'Playback',
+    component: Playback,
+    meta: { requiresAuth: true }
   }
 ]
 

@@ -9,7 +9,12 @@
       </template>
       <div class="content">
         <p>这是你的毕业设计首页</p>
-        <el-button type="danger" @click="handleLogout">退出登录</el-button>
+        <div class="button-group">
+          <el-button type="primary" @click="goToMonitor">实时监控</el-button>
+          <el-button type="success" @click="goToCameras">摄像头管理</el-button>
+          <el-button type="info" @click="goToPlayback">录像回放</el-button>
+        </div>
+        <el-button type="danger" @click="handleLogout" style="margin-top: 20px;">退出登录</el-button>
       </div>
     </el-card>
   </div>
@@ -22,6 +27,21 @@ import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
 const userStore = useUserStore()  // 获取用户状态
+
+// 跳转到监控页面
+const goToMonitor = () => {
+  router.push('/monitor')
+}
+
+// 跳转到摄像头管理页面
+const goToCameras = () => {
+  router.push('/cameras')
+}
+
+// 跳转到录像回放页面
+const goToPlayback = () => {
+  router.push('/playback')
+}
 
 // 退出登录方法
 const handleLogout = async () => {
@@ -36,12 +56,12 @@ const handleLogout = async () => {
         type: 'warning'     // 警告类型（黄色图标）
       }
     )
-    // 用户点“确定”，执行退出
+    // 用户点"确定"，执行退出
     userStore.logout()  // 清空 Pinia 和 localStorage
     ElMessage.success('已退出登录')
     router.push('/login')  // 跳登录页
   } catch (error) {
-    // 用户点“取消”，不做任何操作
+    // 用户点"取消"，不做任何操作
   }
 }
 </script>
@@ -72,5 +92,12 @@ const handleLogout = async () => {
 .content p {
   margin-bottom: 20px;
   font-size: 16px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 </style>
